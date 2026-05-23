@@ -28,21 +28,24 @@ body {
 /* Header */
 
 .hero-header {
-    
     width: 100%;
-    height: 600px;
-    background: #F0F2F0;  
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #000C40, #F0F2F0);  
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, hsla(236, 91%, 37%, 0.575), #f0f0f231), url(../imagenes/imgPersona/Curriculum.png); 
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    min-height: 600px;
+    background: linear-gradient(135deg, rgba(36, 37, 81, 0.76), rgba(240, 240, 242, 0.08)), url(../imagenes/imgPersona/Curriculum.png);
     background-size: cover;
     background-attachment: fixed;
-    position: relative;    
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(6, 7, 24, 0.2), rgba(6, 7, 24, 0.28));
 }
 
 .hero-header .textos-header{
+    position: relative;
     display: flex;
     height: 430px;
     width: 100%;
@@ -50,17 +53,21 @@ body {
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    padding: 0 20px;
 }
 
 .textos-header h1{
-    font-size: 50px;
+    font-size: clamp(2.2rem, 4.6vw, 3.3rem);
     color:#fff;
+    line-height: 1.1;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
 
 .textos-header h2{
-    font-size: 45px;
+    font-size: clamp(1.7rem, 3.9vw, 2.8rem);
     font-weight: 300;
     color:#fff;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
 
 .wave{
@@ -72,15 +79,19 @@ body {
 /* About us */
 
 main .sobre-nosotros{
-    padding: 30px 0 60px 0;
+    padding: 48px 0 68px 0;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
 }
 .contenedor-sobre-nosotros{
     display: flex;
     justify-content: space-evenly;
+    gap: 28px;
 }
 
 .imagen-about-us{
     width: 48%;
+    border-radius: 18px;
+    box-shadow: var(--shadow-card);
 }
 
 .sobre-nosotros .contenido-textos{
@@ -89,10 +100,12 @@ main .sobre-nosotros{
 
 .contenido-textos h3{
     margin-bottom: 15px;
+    color: var(--color-primary);
+    font-size: 1.05rem;
 }
 
 .contenido-textos h3 span{
-    background: #4d0686;
+    background: var(--color-primary);
     color: #fff;
     border-radius: 50%;
     display: inline-block;
@@ -100,7 +113,7 @@ main .sobre-nosotros{
     width: 30px;
     height: 30px;
     padding: 2px;
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+    box-shadow: 0 8px 18px rgba(36, 37, 81, 0.2);
     margin-right: 5px;
 }
 
@@ -108,19 +121,22 @@ main .sobre-nosotros{
     padding: 0px 0px 30px 15px;
     font-weight: 300;
     text-align: justify;
+    line-height: 1.75;
 }
 
 /* Galeria */
 
 
 .portafolio{
-    background: #f2f2f2;
+    background: linear-gradient(180deg, #f7f8fb 0%, #eef0f6 100%);
+    padding: 8px 0 30px;
 }
 
 .galeria-port{
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    gap: 18px;
 }
 
 .imagen-port{
@@ -129,7 +145,8 @@ main .sobre-nosotros{
     overflow: hidden;
     position: relative;
     cursor: pointer;
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, .5);
+    box-shadow: var(--shadow-card);
+    border-radius: 18px;
 }
 
 .imagen-port > img{
@@ -145,7 +162,7 @@ main .sobre-nosotros{
     height: 100%;
     top: 0;
     transform: scale(0);
-    background: hsla(273,91%,27%, 0.7);
+    background: linear-gradient(180deg, rgba(36, 37, 81, 0.15), rgba(36, 37, 81, 0.72));
     transition: transform .5s;
     display: flex;
     justify-content: center;
@@ -170,26 +187,30 @@ main .sobre-nosotros{
 .cards{
     display: flex;
     justify-content: space-evenly;
+    gap: 20px;
 }
 
 .cards .card{
-    background: #4d0686;
+    background: linear-gradient(180deg, #4d4d5c 0%, #3f4155 100%);
     display: flex;
     width: 46%;
     height: 200px;
     align-items: center;
     justify-content: space-evenly;
-    border-radius: 5px;
-    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.6);
+    border-radius: 18px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
 }
 
 .cards .card img{
     width: 100px;
     height: 100px;
     object-fit: cover;
-    border: 3px solid #fff;
+    border: 4px solid rgba(255, 255, 255, 0.92);
     border-radius: 50%;
     display: block;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
 }
 
 .cards .card > .contenido-texto-card{
@@ -205,8 +226,8 @@ main .sobre-nosotros{
 /*  Our team */
 
 .about-services{
-    background: #f2f2f2;
-    padding-bottom: 30px;
+    background: linear-gradient(180deg, #f7f8fb 0%, #eef0f6 100%);
+    padding-bottom: 36px;
 }
 
 
@@ -214,15 +235,22 @@ main .sobre-nosotros{
     display:flex;
     justify-content: space-between;
     align-items: center;
+    gap: 26px;
 }
 
 .servicio-ind{
     width: 28%;
     text-align: center;
+    padding: 20px 16px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: var(--shadow-soft);
 }
 
 .servicio-ind img{
     width: 90%;
+    border-radius: 14px;
+    box-shadow: var(--shadow-soft);
 }
 
 .servicio-ind h3{
@@ -232,40 +260,52 @@ main .sobre-nosotros{
 .servicio-ind p{
     font-weight: 300;
     text-align: justify;
+    line-height: 1.7;
 }
 
 /*ICONOS*/
 #iconos{
-    padding: 0px 50px;
-    background: rgba(77,77,92, 0.6);
-    margin-top: 50px;
+    padding: 0px 50px 10px;
+    background: linear-gradient(180deg, rgba(77, 77, 92, 0.92), rgba(36, 37, 81, 0.96));
+    margin-top: 56px;
 }
 .contenido-iconos{
-    padding: 50px 50px 0px 50px;
+    padding: 50px 28px 20px;
     display: flex;
     justify-content: space-between;
     text-align: center;
+    gap: 16px;
 }
 .contenido-iconos div{
     flex: 1;
     margin: 20px 0px;
-    border-right: 2px solid rgba(255,255,255,0.2);
+    border-right: 1px solid rgba(255,255,255,0.14);
+    padding: 18px 14px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.contenido-iconos div:hover{
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.06);
 }
 #icono-mobile{
     border: none;
 }
 .contenido-iconos div i{
-    color: #6cc091;
+    color: var(--color-accent);
 }
 .contenido-iconos div h6{
     color: #fff;
-    font-size: 20px;
-    font-weight: 100px;
+    font-size: 18px;
+    font-weight: 600;
     margin: 10px 0px;
 }
 .contenido-iconos div p{
     color: rgba(255,255,255,0.55);
     font-size: 15px;
+    line-height: 1.6;
 }
 .boton-iconos{
     text-align: center;
@@ -274,32 +314,46 @@ main .sobre-nosotros{
 
 /*boton saber más*/
 .boton-saber-mas{
-    display: inline-block;/*propiedad para que no se sobreponga ensima de las demas letras*/
+    display: inline-flex;/*propiedad para que no se sobreponga ensima de las demas letras*/
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    color: #6cc091;
-    padding: 10px 30px;
-    border: 3px solid #6cc091;
-    border-radius: 30px;
+    color: var(--color-primary);
+    padding: 11px 24px;
+    border: 1px solid rgba(108, 193, 145, 0.6);
+    border-radius: 999px;
     margin-top: 15px;
-    transition: all 04s;
+    transition: all 0.25s ease;
+    background: linear-gradient(135deg, rgba(108, 193, 145, 0.12), rgba(108, 193, 145, 0.05));
+    box-shadow: 0 10px 18px rgba(36, 37, 81, 0.06);
+    font-weight: 700;
 }
 .boton-saber-mas:hover{
     background: #6cc091;
     color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 22px rgba(108, 193, 145, 0.24);
 }
 .boton-saber-mas{
-    display: inline-block;/*propiedad para que no se sobreponga ensima de las demas letras*/
+    display: inline-flex;/*propiedad para que no se sobreponga ensima de las demas letras*/
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
-    color: #6cc091;
-    padding: 10px 30px;
-    border: 3px solid #6cc091;
-    border-radius: 30px;
+    color: var(--color-primary);
+    padding: 11px 24px;
+    border: 1px solid rgba(108, 193, 145, 0.6);
+    border-radius: 999px;
     margin-top: 15px;
-    transition: all 04s;
+    transition: all 0.25s ease;
+    background: linear-gradient(135deg, rgba(108, 193, 145, 0.12), rgba(108, 193, 145, 0.05));
+    box-shadow: 0 10px 18px rgba(36, 37, 81, 0.06);
+    font-weight: 700;
 }
 .boton-saber-mas:hover{
     background: #6cc091;
     color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 22px rgba(108, 193, 145, 0.24);
 }
 
 
@@ -307,9 +361,10 @@ main .sobre-nosotros{
 /*FOOTER*/
 footer{
     background: #4d4d5c;/*#4d4d5c*/
-    color: #cccccc4a;/*#cccccc4a*/
+    color: rgba(255, 255, 255, 0.52);/*#cccccc4a*/
     text-align: center;
-    padding: 10px 0px;
+    padding: 16px 0px;
+    letter-spacing: 0.04em;
 }
 /*WHATSHAP*/
 .float{
@@ -323,13 +378,16 @@ footer{
 	border-radius:50px;
 	text-align:center;
   font-size:30px;
-	box-shadow: 2px 2px 3px #999;
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.2);
   z-index:100;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .float:hover {
 	text-decoration: none;
 	color: #25d366;
   background-color:#fff;
+    transform: translateY(-3px);
+    box-shadow: 0 20px 34px rgba(0, 0, 0, 0.22);
 }
 
 .my-float{
@@ -371,6 +429,7 @@ footer{
 
     .cards .card{
         width: 90%;
+        height: auto;
     }
 
     .cards .card:first-child{
@@ -395,6 +454,14 @@ footer{
 
     .servicio-ind img{
         width: 90%;
+    }
+
+    .contenido-iconos{
+        flex-direction: column;
+    }
+
+    .contenido-iconos div{
+        border: none;
     }
 }
 

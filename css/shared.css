@@ -10,13 +10,17 @@
     --color-footer: #4d4d5c;
     --color-white: #ffffff;
     --shadow-soft: 0 10px 30px rgba(36, 37, 81, 0.08);
+    --shadow-card: 0 16px 36px rgba(36, 37, 81, 0.12);
+    --radius-card: 18px;
+    --radius-pill: 999px;
+    --border-soft: 1px solid rgba(36, 37, 81, 0.08);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Segoe UI", "Open Sans", Verdana, Geneva, Tahoma, sans-serif;
 }
 
 html {
@@ -25,7 +29,7 @@ html {
 
 body {
     color: var(--color-text);
-    background: var(--color-white);
+    background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
     line-height: 1.5;
 }
 
@@ -43,44 +47,49 @@ a {
 }
 
 header {
-    height: 60px;
-    background: var(--color-primary);
-    padding: 0 16px;
+    height: 66px;
+    background: linear-gradient(135deg, rgba(36, 37, 81, 0.98), rgba(36, 37, 81, 0.92));
+    padding: 0 18px;
     color: var(--color-white);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 10%;
+    border-radius: 18px;
     margin: 0;
     position: fixed;
     width: calc(100% - 20px);
-    top: 0;
+    top: 10px;
     left: 10px;
     z-index: 1000;
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 18px 40px rgba(15, 18, 45, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
 }
 
 .logo {
     text-transform: uppercase;
     color: var(--color-white);
-    font-weight: 300;
-    letter-spacing: 0.03em;
-    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    font-size: 0.92rem;
 }
 
 .menu {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
 }
 
 .menu a {
     color: var(--color-white);
     text-transform: uppercase;
     text-decoration: none;
-    padding: 0 10px;
-    transition: color 0.25s ease;
-    font-size: 0.92rem;
+    padding: 10px 14px;
+    border-radius: var(--radius-pill);
+    transition: color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    font-weight: 600;
 }
 
 .menu a:hover,
@@ -88,6 +97,11 @@ header {
 .esconder-menu:hover,
 .escoder-menu:hover {
     color: var(--color-accent);
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-1px);
 }
 
 .mostrar-menu,
@@ -108,17 +122,24 @@ header {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: var(--color-accent);
-    padding: 10px 22px;
-    border: 2px solid var(--color-accent);
-    border-radius: 999px;
+    color: var(--color-primary);
+    padding: 11px 22px;
+    border: 1px solid rgba(108, 193, 145, 0.6);
+    border-radius: var(--radius-pill);
     margin-top: 15px;
-    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    background: linear-gradient(135deg, rgba(108, 193, 145, 0.12), rgba(108, 193, 145, 0.05));
+    box-shadow: 0 10px 18px rgba(36, 37, 81, 0.06);
+    font-weight: 700;
+    letter-spacing: 0.03em;
 }
 
 .boton-saber-mas:hover {
     background: var(--color-accent);
     color: var(--color-white);
+    border-color: var(--color-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 14px 22px rgba(108, 193, 145, 0.24);
 }
 
 #banner {
@@ -126,20 +147,25 @@ header {
     overflow: hidden;
     display: flex;
     justify-content: center;
-    border-radius: 5%;
-    padding-top: 10px;
+    border-radius: 24px;
+    padding: 86px 12px 0;
 }
 
 .carousel {
     display: flex;
-    width: min(90%, 1200px);
-    height: 550px;
+    width: min(92%, 1240px);
+    height: 560px;
     position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    border: var(--border-soft);
+    background: var(--color-surface);
 }
 
 .carousel-item {
     min-width: 100%;
-    height: 600px;
+    height: 100%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -266,35 +292,38 @@ header {
 }
 
 #personas {
-    padding: 25px 20px;
+    padding: 36px 20px 18px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     text-align: center;
-    gap: 20px;
+    gap: 24px;
 }
 
 #personas img {
     border-radius: 100%;
-    width: 150px;
-    height: 150px;
+    width: 142px;
+    height: 142px;
     object-fit: cover;
     margin: 0 auto 10px;
+    border: 4px solid rgba(108, 193, 145, 0.2);
+    box-shadow: 0 10px 24px rgba(36, 37, 81, 0.12);
 }
 
 #personas > div {
     flex: 1 1 calc(33.333% - 20px);
     margin: 0;
-    padding: 28px;
-    background-color: var(--color-surface-alt);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    border-radius: 12px;
-    box-shadow: var(--shadow-soft);
+    padding: 28px 24px;
+    background: linear-gradient(180deg, #ffffff 0%, #f7f8fb 100%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    border: var(--border-soft);
 }
 
 #personas > div:hover {
-    background-color: #dddddd;
-    transform: translateY(-2px);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 42px rgba(36, 37, 81, 0.16);
 }
 
 #personas div h4 {
@@ -306,12 +335,13 @@ header {
 #personas div p {
     color: rgba(77, 77, 92, 0.72);
     font-size: 1rem;
+    line-height: 1.65;
 }
 
 .our-services {
-    background-color: var(--color-white);
-    padding: 24px 20px 40px;
-    margin-bottom: 100px;
+    background: linear-gradient(180deg, #ffffff 0%, #fafafb 100%);
+    padding: 30px 20px 56px;
+    margin-bottom: 96px;
 }
 
 .our-services h2 {
@@ -327,33 +357,39 @@ header {
 .services-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 22px;
+    gap: 24px;
     align-items: stretch;
 }
 
 .service,
 .service-detail {
-    background: var(--color-surface);
-    border-radius: 12px;
-    box-shadow: var(--shadow-soft);
+    background: linear-gradient(180deg, #ffffff 0%, #f7f8fb 100%);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    border: var(--border-soft);
 }
 
 .service {
     margin: 0;
-    padding: 28px 22px;
+    padding: 30px 22px 26px;
     text-align: center;
-    transition: transform 0.25s ease, background-color 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 .service:hover {
-    background: #ededed;
-    transform: translateY(-2px);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 42px rgba(36, 37, 81, 0.16);
 }
 
 .service img {
-    width: 140px;
+    width: 132px;
     height: auto;
     margin: 0 auto;
+    filter: drop-shadow(0 10px 18px rgba(36, 37, 81, 0.12));
 }
 
 .service h3 {
@@ -366,14 +402,15 @@ header {
 .service p {
     font-size: 0.95rem;
     margin: 0;
-    text-align: justify;
+    text-align: center;
     color: var(--color-text-muted);
+    line-height: 1.65;
 }
 
 .service-detail {
     grid-column: 1 / -1;
     margin: 0;
-    padding: 28px;
+    padding: 30px;
     text-align: justify;
     font-size: 1rem;
     line-height: 1.7;
@@ -386,6 +423,9 @@ header {
     height: auto;
     display: block;
     margin: 0 auto 20px;
+    border-radius: 18px;
+    box-shadow: var(--shadow-card);
+    border: var(--border-soft);
 }
 
 .responsive-image {
@@ -399,7 +439,7 @@ header {
 
 .mapa {
     text-align: center;
-    padding: 24px 16px 48px;
+    padding: 28px 16px 56px;
 }
 
 .mapa h2 {
@@ -415,17 +455,18 @@ header {
     height: auto;
     border: 0;
     border-radius: 16px;
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-card);
+    border: var(--border-soft);
 }
 
 #iconos {
-    padding: 0 24px;
-    background: rgba(77, 77, 92, 0.6);
-    margin-top: 50px;
+    padding: 0 24px 10px;
+    background: linear-gradient(180deg, rgba(77, 77, 92, 0.92), rgba(36, 37, 81, 0.96));
+    margin-top: 56px;
 }
 
 .contenido-iconos {
-    padding: 44px 20px 0;
+    padding: 44px 20px 18px;
     display: flex;
     justify-content: space-between;
     text-align: center;
@@ -435,8 +476,16 @@ header {
 .contenido-iconos div {
     flex: 1;
     margin: 20px 0;
-    border-right: 2px solid rgba(255, 255, 255, 0.2);
-    padding: 0 16px;
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 20px 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.contenido-iconos div:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.06);
 }
 
 #icono-mobile {
@@ -450,7 +499,7 @@ header {
 .contenido-iconos div h6 {
     color: var(--color-white);
     font-size: 1.1rem;
-    font-weight: 400;
+    font-weight: 600;
     margin: 10px 0;
     text-transform: capitalize;
 }
@@ -458,6 +507,7 @@ header {
 .contenido-iconos div p {
     color: rgba(255, 255, 255, 0.68);
     font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .boton-iconos {
@@ -467,9 +517,10 @@ header {
 
 footer {
     background: var(--color-footer);
-    color: rgba(255, 255, 255, 0.32);
+    color: rgba(255, 255, 255, 0.52);
     text-align: center;
-    padding: 10px 0;
+    padding: 16px 0;
+    letter-spacing: 0.04em;
 }
 
 .float {
@@ -483,14 +534,17 @@ footer {
     border-radius: 50px;
     text-align: center;
     font-size: 30px;
-    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.2);
     z-index: 100;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .float:hover {
     text-decoration: none;
     color: #25d366;
     background-color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 20px 34px rgba(0, 0, 0, 0.22);
 }
 
 .my-float {
@@ -514,7 +568,7 @@ footer {
         position: fixed;
         width: 100%;
         height: 100vh;
-        background: var(--color-primary);
+        background: linear-gradient(180deg, rgba(36, 37, 81, 0.98), rgba(36, 37, 81, 0.96));
         right: -100%;
         top: 0;
         text-align: center;
